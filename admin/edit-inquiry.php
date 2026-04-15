@@ -30,24 +30,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Edit Inquiry</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+    <div class="container">
 
-<h2>Edit Inquiry</h2>
+    <h2>Edit Inquiry</h2>
 
-<p><strong>Name:</strong> <?php echo $data['full_name']; ?></p>
+    <p><strong><?php echo $data['full_name']; ?></strong></p>
 
-<form method="POST">
-    <label>Status:</label>
-    <select name="status">
-        <option value="new" <?php if($data['status']=='new') echo 'selected'; ?>>New</option>
-        <option value="contacted" <?php if($data['status']=='contacted') echo 'selected'; ?>>Contacted</option>
-        <option value="closed" <?php if($data['status']=='closed') echo 'selected'; ?>>Closed</option>
-    </select>
+    <form method="POST">
+        <select name="status">
+            <option value="new" <?php if($data['status']=='new') echo 'selected'; ?>>New</option>
+            <option value="contacted" <?php if($data['status']=='contacted') echo 'selected'; ?>>Contacted</option>
+            <option value="closed" <?php if($data['status']=='closed') echo 'selected'; ?>>Closed</option>
+        </select>
 
-    <br><br>
-    <button type="submit">Update</button>
-</form>
+        <button type="submit">Update</button>
+    </form>
 
+    <br>
+    <a href="inquiries.php">← Back</a>
+
+    </div>
 </body>
 </html>

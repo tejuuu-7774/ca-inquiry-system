@@ -40,60 +40,52 @@
 <html>
 <head>
     <title>All Inquiries</title>
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+    <div class="container">
+        
     <h2>All Inquiries</h2>
 
-    <form method="GET">
-        <input type="text" name="search" placeholder="Search by name/email/mobile">
+    <form method="GET" class="form-inline">
+        <input type="text" name="search" placeholder="Search..." value="<?php echo $search; ?>">
 
         <select name="status">
             <option value="">All</option>
-            <option value="new">New</option>
-            <option value="contacted">Contacted</option>
-            <option value="closed">Closed</option>
+            <option value="new" <?php if($status=='new') echo 'selected'; ?>>New</option>
+            <option value="contacted" <?php if($status=='contacted') echo 'selected'; ?>>Contacted</option>
+            <option value="closed" <?php if($status=='closed') echo 'selected'; ?>>Closed</option>
         </select>
 
         <button type="submit">Filter</button>
     </form>
-    <br>
 
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th>City</th>
-            <th>Service</th>
-            <th>Message</th>
-            <th>Status</th>
-            <th>Created</th>
-            <th>Action</th>
-        </tr>
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
 
-        <?php foreach ($inquiries as $row): ?>
-        <tr>
-            <td><?php echo $row['id']; ?></td>
-            <td><?php echo $row['full_name']; ?></td>
-            <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['mobile']; ?></td>
-            <td><?php echo $row['city']; ?></td>
-            <td><?php echo $row['service']; ?></td>
-            <td><?php echo $row['message']; ?></td>
-            <td><?php echo $row['status']; ?></td>
-            <td><?php echo $row['created_at']; ?></td>
-            <td>
-                <a href="edit-inquiry.php?id=<?php echo $row['id']; ?>">Edit</a> |
-                <a href="delete-inquiry.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
+    <?php foreach ($inquiries as $row): ?>
+    <tr>
+        <td><?php echo $row['id']; ?></td>
+        <td><?php echo $row['full_name']; ?></td>
+        <td><?php echo $row['email']; ?></td>
+        <td><?php echo $row['status']; ?></td>
+        <td>
+            <a href="edit-inquiry.php?id=<?php echo $row['id']; ?>">Edit</a> |
+            <a href="delete-inquiry.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Delete?')">Delete</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
 
     </table>
 
     <br>
-    <a href="dashboard.php">Back to Dashboard</a>
-
+    <a href="dashboard.php">← Back</a>
+    </div>
 </body>
 </html>
