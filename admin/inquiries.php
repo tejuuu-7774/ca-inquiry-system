@@ -69,6 +69,7 @@
             <th>Message</th>
             <th>Status</th>
             <th>Created</th>
+            <th>Action</th>
         </tr>
 
         <?php foreach ($inquiries as $row): ?>
@@ -82,6 +83,10 @@
             <td><?php echo $row['message']; ?></td>
             <td><?php echo $row['status']; ?></td>
             <td><?php echo $row['created_at']; ?></td>
+            <td>
+                <a href="edit-inquiry.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                <a href="delete-inquiry.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
         </tr>
         <?php endforeach; ?>
 
