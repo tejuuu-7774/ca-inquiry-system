@@ -22,18 +22,41 @@ $closed = $conn->query("SELECT COUNT(*) FROM inquiries WHERE status='closed'")->
 <body>
 
 <div class="container">
-    <h2>Admin Dashboard</h2>
 
-    <div class="stats">
-        <div>Total: <?php echo $total; ?></div>
-        <div>New: <?php echo $new; ?></div>
-        <div>Contacted: <?php echo $contacted; ?></div>
-        <div>Closed: <?php echo $closed; ?></div>
+    <h2>Admin Dashboard</h2>
+    <p style="color:#666;">Overview of inquiry activity</p>
+
+    <div class="cards">
+
+        <div class="card total">
+            <h3>Total</h3>
+            <p><?php echo $total; ?></p>
+        </div>
+
+        <div class="card new">
+            <h3>New</h3>
+            <p><?php echo $new; ?></p>
+        </div>
+
+        <div class="card contacted">
+            <h3>Contacted</h3>
+            <p><?php echo $contacted; ?></p>
+        </div>
+
+        <div class="card closed">
+            <h3>Closed</h3>
+            <p><?php echo $closed; ?></p>
+        </div>
+
     </div>
 
     <br>
-    <a href="inquiries.php">View Inquiries</a> |
-    <a href="logout.php">Logout</a>
+
+    <div class="actions">
+        <a href="inquiries.php" class="btn">View Inquiries</a>
+        <a href="logout.php" class="btn danger">Logout</a>
+    </div>
+
 </div>
 
 </body>

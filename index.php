@@ -1,41 +1,49 @@
+<?php
+$success = isset($_GET['success']);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CA Inquiry Form</title>
+    <title>CA Inquiry</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<h2>Inquiry Form</h2>
+<div class="container">
 
-<?php
-if (isset($_GET['success'])) {
-    echo "<p style='color:green;'>Inquiry submitted successfully!</p>";
-}
-?>
+    <h2>CA Consultation Inquiry</h2>
+    <p style="color:#666;">Submit your details and our team will get back to you.</p>
 
-<form method="POST" action="submit.php">
+    <?php if ($success): ?>
+        <p style="color:green;">Inquiry submitted successfully!</p>
+    <?php endif; ?>
 
-    <label>Full Name:</label><br>
-    <input type="text" name="full_name" required><br><br>
+    <form method="POST" action="submit.php">
 
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
+        <label>Full Name</label>
+        <input type="text" name="full_name" placeholder="Enter your name" required>
 
-    <label>Mobile:</label><br>
-    <input type="text" name="mobile"><br><br>
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
 
-    <label>City:</label><br>
-    <input type="text" name="city"><br><br>
+        <label>Mobile</label>
+        <input type="text" name="mobile" placeholder="Enter your number">
 
-    <label>Service:</label><br>
-    <input type="text" name="service"><br><br>
+        <label>City</label>
+        <input type="text" name="city" placeholder="Enter your city">
 
-    <label>Message:</label><br>
-    <textarea name="message"></textarea><br><br>
+        <label>Service</label>
+        <input type="text" name="service" placeholder="e.g. Tax Filing">
 
-    <button type="submit">Submit</button>
+        <label>Message</label>
+        <textarea name="message" placeholder="Write your query..."></textarea>
 
-</form>
+        <button type="submit">Submit Inquiry</button>
+
+    </form>
+
+</div>
 
 </body>
 </html>
